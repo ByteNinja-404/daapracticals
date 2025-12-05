@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+long long comparison_count = 0;
+
+void mySwap(int& a, int& b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void heapify(int* arr, int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n) {
+        comparison_count++;
+        if (arr[left] > arr[largest])
+            largest = left;
+    }
+
+    if (right < n) {
+        comparison_count++;
+        if (arr[right] > arr[largest])
+            largest = right;
+    }
+
+    if (largest != i) {
+        mySwap(arr[i], arr[largest]);
+        heapify(arr, n, largest);
+    }
+}
+
+void heapSort(int* arr, int n) {
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    for (int i = n - 1; i > 0; i--) {
+        mySwap(arr[0], arr[i]);
+        heapify(arr, i, 0);
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    int* arr = new int[n];
+    cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; i++) cin >> arr[i];
+
+    comparison_count = 0;
+    heapSort(arr, n);
+
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) cout << arr[i] << " "; cout << endl;
+
+    cout << "Number of comparisons: " << comparison_count << endl;
+
+    delete[] arr;
+    return 0;
+}
