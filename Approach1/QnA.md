@@ -1,6 +1,6 @@
-# 🎓 DAA Viva Questions & Answers
+# 🎓 DAA Questions & Answers
 
-This document contains a comprehensive collection of potential Viva questions, covering general concepts, practical specifics, examiner traps, and theoretical proofs.
+This document contains a comprehensive collection of potential Viva questions, covering general concepts, practical specifics, exam traps, and theoretical proofs.
 
 ---
 
